@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+$header-size: 70px;
+$board-size: 500px;
+$border-radius: 5px;
+$border-width: 1px;
+$link-color: #1980de;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a,
+button {
+    color: $link-color;
+}
+
+body,
+input,
+button {
+    color: #333;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+svg {
+    fill: currentColor;
+}
+
+body {
+    background-color: #ebebeb;
+}
+
+input,
+button {
+    border-radius: $border-radius;
+    border-width: $border-width;
+}
+
+
+.Container {
+    background-color: #fff;
+    border-radius: $border-radius;
+    padding: 20px;
+    width: $board-size + 200px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-rows: $header-size 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    grid-row: 1;
+    grid-column: 1 / span 4;
+}
+
+.Nav a {
+    text-decoration: none;
+    padding: 10px;
+    border: $border-width solid currentColor;
+    border-radius: $border-radius;
+    display: flex;
+    align-items: center;
+
+    .Icon {
+        margin-left: 5px;
+        height: 25px;
+        max-width: 25px;
+    }
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    .Icon {
+        height: 60px;
+        width: 60px;
+    }
+
+}
+
+.NewGameButton {
+    height: 50px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 120%;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.Games {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.Game {
+    border-radius: $border-radius;
+    color: $link-color;
+    line-height: 0.95;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px;
+    &:not(.Game_Selected) {
+        cursor: pointer;
+    }
+}
+
+.Game_Selected {
+    background-color: $link-color;
+    color: #fff;
+}
+
+.GameChallenger {
+    font-weight: bold;
+}
+
+.GameStatus {
+    opacity: 0.65;
+    font-size: 80%;
+}
+
+.CurrentGame {
+    grid-row: 2;
+    grid-column: 2 / span 3;
+}
+
+.Board {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: $board-size;
+    height: $board-size;
+}
+
+.BoardTile {
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+    .Icon {
+        max-width: 100%;
+        max-height: 100%;
+
+    }
+
+    &_Host {
+        color: $link-color;
+    }
+
+    &_Challenger {
+        color: #de1919;
+    }
+
+    &:nth-of-type(1),
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+        border-top-width: 4px;
+    }
+
+    &:nth-of-type(1),
+    &:nth-of-type(4),
+    &:nth-of-type(7) {
+        border-left-width: 4px;
+    }
+
+    &:nth-of-type(3),
+    &:nth-of-type(6),
+    &:nth-of-type(9) {
+        border-right-width: 4px;
+    }
+
+    &:nth-of-type(7),
+    &:nth-of-type(8),
+    &:nth-of-type(9) {
+        border-bottom-width: 4px;
+    }
+
+    &:nth-of-type(1) {
+        border-top-left-radius: $border-radius;
+    }
+
+    &:nth-of-type(3) {
+        border-top-right-radius: $border-radius;
+    }
+
+    &:nth-of-type(7) {
+        border-bottom-left-radius: $border-radius;
+    }
+
+    &:nth-of-type(9) {
+        border-bottom-right-radius: $border-radius;
+    }
+
+}
+
+
+form {
+    grid-row: 2;
+    grid-column: 2 / span 2;
+    display: flex;
+    flex-direction: column;
+
+    > * {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input,
+    button {
+        height: 40px;
+    }
+
+    textarea {
+        height: 120px;
+    }
+
+    input {
+        border: 1px solid currentColor;
+        padding: 10px;
+    }
+
+    button {
+        border: 1px solid $link-color;
+        background-color: $link-color;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    [readonly] {
+        background-color: #ebebeb;
+        cursor: not-allowed;
+    }
+    
+}
